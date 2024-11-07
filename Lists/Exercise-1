@@ -1,8 +1,8 @@
 #turning Pascal and Camelcase to snakecase using list comprehension
 def pascal_to_snake_case(string):
-    string_list = ['_'+char.upper() if char.isupper() else char for char in string]
-    new_string = ''.join(string_list).strip()
+    string_list = ['_'+char.lower() if char.isupper() else char for char in string]
+    new_string = ''.join(string_list).strip('_')
     return new_string
 
 variable = 'PascalCase'
-pascal_to_snake_case(variable)
+print(pascal_to_snake_case(variable))
