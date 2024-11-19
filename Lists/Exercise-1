@@ -1,8 +1,36 @@
-#turning Pascal and Camelcase to snakecase using list comprehension
-def pascal_to_snake_case(string):
-    string_list = ['_'+char.lower() if char.isupper() else char for char in string]
-    new_string = ''.join(string_list).strip('_')
-    return new_string
+#list comprehensions and generator expressions are used to perform operations on each item in a iterable
+#This exercise explores the differences between the list comprehension and exression generator
+#The list comprehesion uses [expression for expression in iterable], and store the list in memory
+#whilst the expression generator uses(expression for expression in a iterabele)
+#we use generator expressions in larger datasets, for instance wanting the square of each number in 1 million items
 
-variable = 'PascalCase'
-print(pascal_to_snake_case(variable))
+#example of list comprehension, to change the uppercase characters to to lower case and prepend a under score to them
+string = 'TebogoIsTheBestInTheWorld!'
+
+def list_comprehension_solution(string):
+    new_string = ''.join(['_'+char.lower() if char.isupper() else char for char in string])
+    return new_string.strip('_')
+print(list_comprehension_solution(string))
+
+def generator_expression_solution(string):
+    new_string = ''.join(('_'+char.lower() if char.isupper() else char for char in string)).strip('_')
+    return new_string
+print(generator_expression_solution(string))
+
+#Challenge 1
+#create a function that will take a list as output.
+#return the sum of the squares numbers that are even
+#use generator expressions for the challenge
+#the output should be in this format sum : (list of numbers)
+
+def summing_even_squares(numbers):
+    list_numbers = (number**2 for number in numbers if number%2!=0)
+    list_of_even = list(list_numbers)
+    equation_of_even = '+'.join(map(str,list_of_even))
+    sum_of_even = sum(list_of_even)
+    return f'{sum_of_even}: {equation_of_even}'
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+print(summing_even_squares(numbers))
+
+#The expression gets exhausted, the above code did not output the correct output, because  had already iteratated
+#I am done for the day
