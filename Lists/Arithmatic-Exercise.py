@@ -1,4 +1,4 @@
-string = ' 43+ 354'
+string = ' 435-354'
 #TODO: extract number 1, operator, number 2 plus input correction
 translate_object = str.maketrans({' ':''})
 translated_string = string.translate(translate_object)
@@ -19,11 +19,14 @@ elif len(number_1)>4:
     print('Numbers cannot be more than four digits.')
 
 
+
 number_2 = translated_string[operator_index:]
 if len(number_2)==0:
     number_2=0
 elif len(number_2)>4:
     print('Numbers cannot be more than four digits.')
+else:
+    pass
 
 
 #convert and return an answer.
