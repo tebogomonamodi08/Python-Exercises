@@ -1,6 +1,8 @@
 def main():
     problems = ["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]
+    
     if verify_length(problems):
+        formatted_problems = ''
         list_ = []
         for equation in problems:
             table = str.maketrans({" ":""})
@@ -11,10 +13,17 @@ def main():
     
             if operant_verification(number_1,number_2):
                 list_.append(formatter(operator,number_1,number_2))
+        
+
+                
             else:
                 print('Error: Numbers cannot be more than four digits.')
     else:
         print('Error: Too many problems.')
+    print(formatted_problems)
+
+
+
 
 
 def verify_length(problems):
@@ -40,20 +49,21 @@ def operant_verification(number_1,number_2):
     return (len(number_1)<4 or len(number_2)<4) and (number_1.isdigit() and number_2.isdigit())
 
 def answer(operator, number_1, number_2):
-    int(number_1)
-    int(number_2)
-    add = lambda number_1,number_2 : number_1+number_2
-    subtract = lambda number_1, number_2 : number_1-number_2
 
     if operator=="+":
-        return add(number_1,number_2)
+        return int(number_1)+int(number_2)
     else:
-        return subtract(number_1, number_2)
+        return int(number_1)-int(number_2)
         
     
 
 def formatter(operator,number_1,number_2):
-    print(f'{number_1:>5}\n{operator}{number_2:>4}\n-----')
+    return f'{number_1:>5}\n{operator}{number_2:>4}\n-----'
+
+def formatter_ans(operator,number_1,number_2):
+    return f'{number_1:>5}\n{operator}{number_2:>4}\n-----\n{answer(operator,number_1,number_2):>5}'
+
+
     
     
 
